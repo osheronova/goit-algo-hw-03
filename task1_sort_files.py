@@ -6,11 +6,11 @@ import sys
 
 
 def parse_args() -> tuple[Path, Path]:
-    """Grab CLI arguments (source is required, destination is optional)."""
+    """Grab CLI arguments (source is required, destination is optional)"""
     parser = argparse.ArgumentParser(
-        description="Recursively copy files and sort them by extension."
+        description="Recursively copy files and sort them by extension"
     )
-    parser.add_argument("source", type=Path, help="Where we copy files FROM.")
+    parser.add_argument("source", type=Path, help="Where we copy files FROM")
     parser.add_argument(
         "destination",
         type=Path,
@@ -23,7 +23,7 @@ def parse_args() -> tuple[Path, Path]:
 
 
 def copy_tree(src: Path, dst_root: Path) -> None:
-    """Walk through folders and drop each file into a folder named after its extension."""
+    """Walk folders and sort files into subfolders named by their extensions"""
     for entry in src.iterdir():
         try:
             if entry.is_dir():
@@ -48,11 +48,11 @@ def copy_tree(src: Path, dst_root: Path) -> None:
 
 
 def main() -> None:
-    """Validate paths and start the recursive copying."""
+    """Validate paths and start the recursive copying"""
     src, dst = parse_args()
 
     if not src.exists() or not src.is_dir():
-        print(f"Error: '{src}' does not exist or is not a directory.")
+        print(f"Error: '{src}' does not exist or is not a directory")
         sys.exit(1)
 
     try:
